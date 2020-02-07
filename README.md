@@ -1,4 +1,4 @@
-# Hacker news API https://github.com/HackerNews/API
+## Hacker news API https://github.com/HackerNews/API
 
 ## Project setup
 ```
