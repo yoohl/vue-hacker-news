@@ -3,29 +3,34 @@
     <div v-for="li in listdata" class="list">
       <div class="number" v-if="li.points">{{ li.points }}</div>
       <div class="text">
+
+        <!-- 타이틀 -->
         <h3 class="title">
-          <a :href="li.url" target="_blank" 
+          <div 
             v-if="li.domain">
-            {{ li.title }} 
-          </a>
+            <a :href="li.url" target="_blank" 
+              >{{ li.title }}</a>
+            <small class="domain"><a :href="`http://${li.domain}`" target="_blank" >( {{ li.domain }} )</a></small>
+          </div>
           <router-link v-bind:to="`/item/${li.id}`" 
             v-else>
             {{ li.title }}
           </router-link>
         </h3>
 
-        <small>
+        <!-- 세부정보 -->
+        <small class="detail">
           {{ li.time_ago }} by 
 
-          <a :href="li.url" target="_blank" 
-            v-if="li.domain">
-            {{ li.domain }} 
-          </a>
-          <router-link v-bind:to="`/user/${li.user}`"
-            v-else
+          <router-link v-bind:to="`/user/${li.user}`" class="user"
+            v-if="li.user"
           >
             {{ li.user }}
           </router-link> 
+          <a :href="li.url" target="_blank" 
+            v-else>
+            {{ li.domain }} 
+          </a>
        </small>
       </div>
     </div> 
@@ -93,11 +98,20 @@ export default {
   font-weight: normal;
   line-height: 29px;
 }
+.text .title .domain a{
+  font-size: 11px;
+  color:#888;
+  margin-left:5px;
+}
 .text a {
   color:#000;
 }
-.text small {
+.text .detail {
   display: block;
+}
+.text .detail .user {
+  display: inline;
+  color:#db4c3f
 }
 .text small a{
   text-decoration: underline

@@ -19,7 +19,9 @@ export default new Vuex.Store({
     item: {},
   },
   getters: {
-
+    fetchedNews(state) {
+      return state.news;
+    },
     fetchedAsk(state) {
       return state.ask;
     },
@@ -45,7 +47,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    FETCH_NEWS(context) {
+    FETCH_NEWS(context) { // context로 store의 메서드와 속성 접근, 중간에 비동기 로직을 넣어줄 수 있다.
       fetchNewsList()
         .then((response) => {
           // SET NEW로 제어권을 넘김, 액션에서 커밋을 해서 뮤테이션에 값을 넘기고 있음

@@ -1,5 +1,14 @@
 <template>
   <div>
+    <!-- 사용자 정보 -->
+    <user-profile>
+      <router-link  slot="username" v-bind:to="`/user/${item.user}`">
+        {{ item.user }}
+      </router-link>
+      <div slot="time">{{ 'posted ' + item.time_ago }}</div>
+    </user-profile>
+
+    <!-- 글 --> 
     <div class="title">{{ item.title }}</div>
     <div class="subtext">
       <span>{{ item.points }} points</span> by 
@@ -18,6 +27,8 @@
 <script>
 // import axios from 'axios';
 // import { mapState, mapGetters } from 'vuex';
+
+import UserProfile from '../components/UserProfile.vue'
 
 export default {
   // data() {
@@ -40,6 +51,9 @@ export default {
     //   console.log(this.item)
     // })
     this.$store.dispatch('FETCH_ITEM', itemId)
+  },
+  components: {
+    UserProfile,
   }
 }
 </script>

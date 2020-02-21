@@ -1,16 +1,20 @@
 <template>
   <div>
-    <p>user: {{ fetchedUser.id }}</p>
-    <p>created: {{ fetchedUser.created }}</p>
-    <p>karma: {{ fetchedUser.karma }}</p>
-    <p>about: {{ fetchedUser.about }}</p>
-  </div>  
+    <user-profile>
+      <div slot="username">name: {{ userInfo.id }}</div>
+      <span slot="time">{{ 'Joined ' + userInfo.created }}, </span>
+      <span slot="karma">{{ userInfo.karma }}</span>
+    </user-profile>
+  </div>
 </template>
 
 <script>
 // import axios from 'axios';
 // import { fetchUserInfo } from '../api/index.js';
-import { mapState, mapGetters } from 'vuex';
+// import { mapState, mapGetters } from 'vuex';
+
+import userProfile from '../components/UserProfile.vue'
+
 export default {
   // data() {
   //   return {
@@ -18,9 +22,13 @@ export default {
   //   }
   // },
   computed: {
-    ...mapGetters([
-      'fetchedUser'
-    ])
+    // ...mapGetters([
+    //   'fetchedUser'
+    // ])
+    userInfo() {
+      return this.$store.state.user;
+    }
+
   },
   created() {
     const userName = this.$route.params.id;
@@ -31,6 +39,9 @@ export default {
     // })
     
     this.$store.dispatch('FETCH_USER', userName)
+  },
+  components: {
+    userProfile,
   }
 }
 </script>

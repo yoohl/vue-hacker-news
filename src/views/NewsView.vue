@@ -23,7 +23,7 @@ export default {
     // this.users = res.data;
     // }).catch(function() {
     //   console.log('error')
-    // })
+    // }) 
   },
   components: {
     ListItem,

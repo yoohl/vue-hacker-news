@@ -3,6 +3,7 @@
     <div class="header_inner">
       <h1>
         <a href="/"><i class="fas fa-smile"></i> HOME</a>
+        {{ msg }}
       </h1>
     </div>
   </div>

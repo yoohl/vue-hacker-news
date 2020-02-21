@@ -28,6 +28,7 @@
         <transition name="fade">
           <router-view/>
         </transition>
+        <!-- <spinner :loading="true"></spinner> -->
       </article>
     </div>
   </div>
@@ -35,10 +36,12 @@
 
 <script>
 import Header from '@/components/Header.vue';
+import Spinner from '@/components/Spinner.vue';
 
 export default {
   components: {
     Header,
+    Spinner,
   },
 };
 </script>
@@ -53,7 +56,7 @@ dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,
 html{overflow-y:scroll}
 body {
   color:#000;font-size:12px;line-height:1.5;
-  font-family:"맑은 고딕",malgun gothic, dotum,Helvetica,'Apple SD Gothic Neo',sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   background:#fafafa;-webkit-text-size-adjust:none;-webkit-font-smoothing:antialiased
 }
 address,em{font-style:normal}
